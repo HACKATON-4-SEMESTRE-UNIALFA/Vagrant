@@ -1,0 +1,38 @@
+# Vagrantfile
+Vagrant.configure("2") do |config|
+  # Box utilizada
+  config.vm.box = "gusztavvargadr/ubuntu-server"
+  config.vm.box_version = "2404.0.2409"
+
+  # Nome da máquina virtual
+  config.vm.hostname = "laravel-env"
+
+  # Mapeamento de portas
+  config.vm.network "forwarded_port", guest: 80, host: 8080     # Nginx
+  config.vm.network "forwarded_port", guest: 3306, host: 3306   # MySQL
+  config.vm.network "forwarded_port", guest: 8891, host: 8891   # PhpMyAdmin
+  config.vm.network "forwarded_port", guest: 6379, host: 6379   # Redis
+  config.vm.network "forwarded_port", guest: 1025, host: 1025   # MailHog SMTP
+  config.vm.network "forwarded_port", guest: 8025, host: 8025   # MailHog Web UI
+  config.vm.network "forwarded_port", guest: 5173, host: 5173   # Porta do React
+  config.vm.network "forwarded_port", guest: 8000, host: 8000   # Porta do Laravel (php artisan serve)
+
+  # Diretório compartilhado - usando a pasta "drive"
+  config.vm.synced_folder "../drive", "/home/vagrant/drive", type: "virtualbox"
+
+  # Script de provisionamento
+  config.vm.provision "shell", inline: <<-SHELL
+    # Atualiza e instala pacotes essenciais
+    apt-get update
+    apt-get install -y docker.io docker-compose
+
+    # Adiciona o usuário vagrant ao grupo docker
+    usermod -aG docker vagrant
+
+    # Navega para o diretório do projeto
+    cd /home/vagrant/drive
+
+    # Subir containers automaticamente
+    docker-compose up -d
+  SHELL
+end

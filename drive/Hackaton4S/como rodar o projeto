@@ -1,0 +1,22 @@
+Vagrant UP na raiz do projeto, dentro de drive (para a sincronização de pasta existir)
+
+Vagrant SSH para entrar na VM
+
+git clone na pasta Hackaton4S:
+
+https://github.com/HACKATON-4-SEMESTRE-UNIALFA/API.git
+
+https://github.com/HACKATON-4-SEMESTRE-UNIALFA/Page.git
+
+dentro da pasta API, rodar o comando: 
+    docker-compose up -d
+
+caso a página não suba automaticamente, rodar o comando:
+    docker-compose up -d react
+
+verificar com o docker ps se os containers estao rodando
+
+abrir na máquina local as portas 8891 para o PhpMyAdmin e 5173 para o React
+
+se as migrations não rodarem automaticamente, rodar o comando:
+    docker-compose run  --rm artisan migrate

@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/drive":{"type":"virtualbox","guestpath":"/home/vagrant/drive","hostpath":"D:/HACKATON-UNIALFA/HACKATON-4º-SEMESTRE/DEVOPS-VAGRANT/drive","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/HACKATON-UNIALFA/HACKATON-4º-SEMESTRE/DEVOPS-VAGRANT/drive","disabled":false,"__vagrantfile":true}}}

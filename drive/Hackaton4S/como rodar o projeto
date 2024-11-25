@@ -11,6 +11,10 @@ https://github.com/HACKATON-4-SEMESTRE-UNIALFA/Page.git
 dentro da pasta API, rodar o comando: 
     docker-compose up -d
 
+caso as depedências não subam automaticamente, rodar o comando:
+    composer install na pasta API
+    npm install na pasta Page
+
 caso a página não suba automaticamente, rodar o comando:
     docker-compose up -d react
 
